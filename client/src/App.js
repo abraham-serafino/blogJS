@@ -1,36 +1,30 @@
-// @flow
-import React from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
 
-function AppComponent(dependencies: { service: { getHello: () => Promise<Object> } }) {
-  const { service } = dependencies;
+function AppComponent({ service }) {
+  return class App extends Component {
+    state = {
+      title: 'Welcome to My Site'
+    };
 
-  function App(props: { title: string, handleClick: () => void }) {
-    const { title, handleClick } = props;
+    render() {
+      const { title } = this.state;
 
-    return (
-      <div>
-        <h2>{title}</h2>
-        <Button onClick={handleClick}>Change title</Button>
-      </div>
-    );
-  }
-
-  return connect(
-    (store: { appState: { title: string } }) => ({
-      title: store.appState.title
-    }),
-
-    (dispatch: (Object) => void, options: { value: any }) => ({
-      handleClick() {
-        service.getHello().then((response: { message: string }) => {
+      const handleClick = () => {
+        service.getHello().then(response => {
           const title = response.message;
-          dispatch({ type: 'changeTitle', value: { title } });
+          this.setState({ title });
         });
-      }
-    })
-  )(App);
+      };
+
+      return (
+        <div>
+          <h2>{title}</h2>
+          <Button onClick={handleClick}>Change title</Button>
+        </div>
+      );
+    }
+  };
 }
 
 export default AppComponent;

@@ -1,14 +1,12 @@
-// @flow
 import { Router } from 'express';
-import HelloService from '../models/HelloModel.js';
+import HelloModel from '../models/HelloModel.js';
 import HelloRoute from './HelloRoute.js';
 
-function routes(dependencies: { db: any }) {
-  const router: any = Router({ mergeParams: true });
-  const { db } = dependencies;
-  const service = HelloService({ db });
+function routes({ db }) {
+  const router = Router({ mergeParams: true });
+  const model = HelloModel({ db });
 
-  router.use('/hello', HelloRoute({ service }));
+  router.use('/hello', HelloRoute({ model }));
 
   return router;
 }

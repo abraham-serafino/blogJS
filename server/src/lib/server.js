@@ -1,15 +1,15 @@
-// @flow
 import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import { createServer } from 'http';
 import config from 'config';
+
 import routes from '../routes/index.js';
 
-function server(dependencies: { Database: Function }): { address: any } {
+function server({ Database }) {
   const app = express();
   const server = createServer(app);
-  const db = dependencies.Database();
+  const db = Database();
 
   if (config.get('cors.enabled')) {
     app.use(cors());

@@ -1,14 +1,9 @@
-// @flow
-function HelloService(dependencies: { db: { query: (string) => Promise<any>, escape: (string) => string } }):
-    { getHello: () => { message: string } } {
-
-  const { query, escape } = dependencies.db;
-
+function HelloModel({ db }) {
   return {
-    getHello(): { message: string } {
+    getHello() {
       return { message: 'Hello world' };
     }
   };
 }
 
-export default HelloService;
+export default HelloModel;

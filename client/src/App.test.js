@@ -1,9 +1,6 @@
-// @flow
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { Provider } from 'react-redux';
 
-import store from './reducers/store.js';
 import HelloService from './services/HelloService.js';
 import AppComponent from './App.js';
 
@@ -13,7 +10,7 @@ describe('App', () => {
     const App = AppComponent({ service });
 
     const component = renderer.create(
-      <Provider store={store}><App/></Provider>
+      <App/>
     );
 
     let tree = component.toJSON();

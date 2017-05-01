@@ -1,8 +1,7 @@
-// @flow
 const HelloService = {
-  getHello(): Promise<*> {
+  getHello() {
     return fetch('http://localhost:9090/api/v1/hello')
-        .then((response: Response) => response.json());
+        .then(response => response.json());
   }
 };
 

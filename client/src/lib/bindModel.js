@@ -1,28 +1,18 @@
-// @flow
 import get from 'lodash.get';
 import set from 'lodash.set';
 
-function bindModel(context: { state: any, setState: Function, handleChange: ?Function }): {
-      model: (path: string) =>
-          { value: string, checked: boolean, onChange: (event: Event) => void },
-
-      arrayItem: (pathToArray: string, index: number, arrayElementSubPath: ?string) =>
-          { value: string, checked: boolean, onChange: (event: Event) => void }
-    } {
-
-  const { state, setState, handleChange } = context;
-
+function bindModel({ state, setState, handleChange }) {
   return {
-    model(path: string): { value: string, checked: boolean, onChange: (event: Event) => void } {
+    model(path) {
       const value = get(state, path, '');
 
       return {
         value,
         checked: value || false,
 
-        onChange(event: Event) {
+        onChange(event) {
           const originalValue = value;
-          const target: any = event.target;
+          const target = event.target;
           const newValue = target.type === 'checkbox' ? target.checked : target.value;
 
           const newState = {};
@@ -30,16 +20,14 @@ function bindModel(context: { state: any, setState: Function, handleChange: ?Fun
 
           setState(newState);
 
-          if (handleChange) {
+          if (typeof handleChange === 'function') {
             handleChange(path, newValue, originalValue);
           }
         }
       };
     },
 
-    arrayItem(pathToArray: string, index: number, arrayElementSubPath: ?string):
-        { value: string, checked: boolean, onChange: (event: Event) => void } {
-
+    arrayItem(pathToArray, index, arrayElementSubPath) {
       const stateArray = get(state, pathToArray, null) || [];
       const value = arrayElementSubPath ?
           get(stateArray[index], arrayElementSubPath, '') :
@@ -49,9 +37,9 @@ function bindModel(context: { state: any, setState: Function, handleChange: ?Fun
         value: value || '',
         checked: value || false,
 
-        onChange(event: Event) {
+        onChange(event) {
           const originalValue = value;
-          const target: any = event.target;
+          const target = event.target;
           const newValue = target.type === 'checkbox' ? target.checked : target.value;
 
           if (arrayElementSubPath) {

@@ -16,16 +16,11 @@
     "moment": "^2.18.1",
     "react": "^15.5.4",
     "react-bootstrap": "^0.31.0",
-    "react-dom": "^15.5.4",
-    "react-redux": "^5.0.4",
-    "react-test-renderer": "^15.5.4",
-    "redux": "^3.6.0",
-    "winston": "^2.3.1"
+    "react-dom": "^15.5.4"
   },
   "devDependencies": {
     "babel-jest": "^19.0.0",
     "enzyme": "^2.8.2",
-    "flow-bin": "^0.45.0",
     "jest": "^19.0.2",
     "jest-enzyme": "^3.0.1",
     "node-sass": "^4.5.2",
@@ -40,8 +35,6 @@
     "watch-css": "yarn build-css && node-sass src/ -o src/ --watch --recursive",
     "build": "yarn build-css && react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "dev": "npm-run-all -p watch-css start",
-    "flow": "flow check",
-    "postinstall": "flow-typed install"
+    "dev": "npm-run-all -p watch-css start"
   }
 }

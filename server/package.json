@@ -8,24 +8,20 @@
     "type": "git"
   },
   "scripts": {
-    "test": "cross-env NODE_ENV=test babel-node --presets=latest,flow spec/run.js",
-    "build": "babel --presets=latest,flow src/ -d dist/ && yarn test",
+    "test": "cross-env NODE_ENV=test babel-node --presets=latest spec/run.js",
+    "build": "babel --presets=latest src/ -d dist/ && yarn test",
     "start": "node dist/index.js",
-    "test-watch": "cross-env NODE_ENV=test nodemon --exec babel-node --presets=latest,flow spec/run.js",
-    "dev-watch": "nodemon --exec babel-node --presets=latest,flow src/index.js",
-    "dev": "npm-run-all -p test-watch dev-watch",
-    "postinstall": "flow-typed install",
-    "flow": "flow check"
+    "test-watch": "cross-env NODE_ENV=test nodemon --exec babel-node --presets=latest spec/run.js",
+    "dev-watch": "nodemon --exec babel-node --presets=latest src/index.js",
+    "dev": "npm-run-all -p test-watch dev-watch"
   },
   "author": "Abraham Serafino",
   "license": "MIT",
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-core": "^6.24.1",
-    "babel-preset-flow": "^6.23.0",
     "babel-preset-latest": "^6.24.1",
     "cross-env": "^4.0.0",
-    "flow-bin": "^0.45.0",
     "jasmine": "^2.6.0",
     "npm-run-all": "^4.0.2",
     "yarn": "^0.22.0"
@@ -35,7 +31,6 @@
     "config": "^1.25.1",
     "cors": "^2.8.3",
     "express": "^4.15.2",
-    "flow-typed": "2.0.0",
     "pg": "^6.1.5",
     "supertest": "^3.0.0"
   }
