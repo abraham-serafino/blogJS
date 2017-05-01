@@ -1,0 +1,10 @@
+{
+  "database": {
+    "host": "postgres://localhost",
+    "port": 5432,
+    "max": 10,
+    "idleTimeoutMillis": 30000,
+    "database": "blog_test"
+  },
+  "port": 0
+}

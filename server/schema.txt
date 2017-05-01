@@ -1,0 +1,45 @@
+POST
+    id (pk)
+    (rtf?)_text (blob)
+    year (int)
+    month (int)
+    date (int)
+    user_id (f_key)
+
+TAG
+    id (pk)
+    text (varchar)
+
+POST_TAG
+    tag_id (f_key)
+    post_id (f_key)
+
+COMMENT
+    id (pk)
+    post_id (f_key)
+    email (email) // either user_id or email is required
+    user_id (f_key) // either user_id or email is required
+    nickname (varchar)
+    title (varchar)
+    text (blob)
+
+REPLY
+    id (pk)
+    comment_id (f_key)
+    email (email)
+    nickname (varchar)
+    text (blob)
+
+USER
+    id (pk)
+    first_name (varchar)
+    last_name (varchar)
+    email (email)
+    signin_token (uuid|NULL) // set when email is sent; deleted when token expires or user follows link
+    signin_token_expires (unix_time) // valid for 2 hours after email is sent
+
+SESSION // created when user follows link; deleted when session expires; required in POST body of every HTTP request
+    id (pk)
+    key (uuid)
+    user_id (f_key)
+    expires (unix_time)

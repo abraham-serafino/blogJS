@@ -1,0 +1,44 @@
+posts
+    getLatest(n)
+    getForYear
+    getForMonth
+    getForDate
+
+post
+    create
+    update
+
+tags
+    get
+    create
+    addToPost
+    createAndAddToPost
+
+tag
+    create
+    addToPost
+    createAndAddToPost
+    removeFromPost
+
+comment
+    submitForReview
+    submitAsAuthor
+    approve
+    delete
+
+comments
+    getPending
+
+reply
+    submitForReview
+    submitAsAuthor
+    approve
+    delete
+    getPending
+
+user
+    requestSigninLink
+    emailSignin
+    create
+    update
+    getProfileDetails

@@ -1,0 +1,47 @@
+{
+  "name": "blogJS-client",
+  "version": "0.0.1",
+  "repository": {
+    "url": "https://github.com/abraham-serafino/blogJS/client",
+    "type": "git"
+  },
+  "author": "Abraham Serafino",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "3",
+    "lodash.get": "^4.4.2",
+    "lodash.merge": "^4.6.0",
+    "lodash.set": "^4.3.2",
+    "moment": "^2.18.1",
+    "react": "^15.5.4",
+    "react-bootstrap": "^0.31.0",
+    "react-dom": "^15.5.4",
+    "react-redux": "^5.0.4",
+    "react-test-renderer": "^15.5.4",
+    "redux": "^3.6.0",
+    "winston": "^2.3.1"
+  },
+  "devDependencies": {
+    "babel-jest": "^19.0.0",
+    "enzyme": "^2.8.2",
+    "flow-bin": "^0.45.0",
+    "jest": "^19.0.2",
+    "jest-enzyme": "^3.0.1",
+    "node-sass": "^4.5.2",
+    "npm-run-all": "^4.0.2",
+    "react-scripts": "0.9.5",
+    "react-test-renderer": "^15.5.4",
+    "yarn": "^0.22.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build-css": "node-sass src/ -o src/",
+    "watch-css": "yarn build-css && node-sass src/ -o src/ --watch --recursive",
+    "build": "yarn build-css && react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "dev": "npm-run-all -p watch-css start",
+    "flow": "flow check",
+    "postinstall": "flow-typed install"
+  }
+}

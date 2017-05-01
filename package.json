@@ -1,0 +1,26 @@
+{
+  "name": "blogJS",
+  "version": "0.0.1",
+  "description": "React, PostGreSQL, and NodeJS Blogging engine",
+  "repository": {
+    "url": "https://github.com/abraham-serafino/blogJS.git",
+    "type": "git"
+  },
+  "author": "Abraham Serafino",
+  "devDependencies": {
+    "npm-run-all": "^4.0.2",
+    "protractor": "^5.1.1",
+    "yarn": "^0.22.0"
+  },
+  "scripts": {
+    "build-server": "cd server && yarn install && yarn build",
+    "build-client": "cd client && yarn install && yarn build",
+    "webdriver": "webdriver-manager update && webdriver-manager start",
+    "protractor": "protractor e2e/conf.js",
+    "test": "npm-run-all -p webdriver protractor",
+    "build": "build-server && build-client",
+    "install-all": "yarn install && cd server && yarn install && cd ../client && yarn install"
+  },
+  "license": "MIT",
+  "dependencies": {}
+}
